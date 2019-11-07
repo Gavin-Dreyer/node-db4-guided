@@ -27,6 +27,8 @@ exports.up = function(knex) {
 				.inTable('animals')
 				.onDelete('RESTRICT')
 				.onUpdate('CASCADE');
+			tbl.date('from').notNullable();
+			tbl.date('to');
 			tbl
 				.integer('zoo_id')
 				.unsigned()
@@ -34,8 +36,6 @@ exports.up = function(knex) {
 				.inTable('zoos')
 				.onDelete('RESTRICT')
 				.onUpdate('CASCADE');
-			tbl.date('from');
-			tbl.date('to');
 		})
 		.createTable('zoos', tbl => {
 			tbl.increments();
